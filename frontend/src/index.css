@@ -1,0 +1,66 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap');
+@import "tailwindcss";
+
+@theme {
+  /* ---- Aurilious & Co. brand palette ----
+     Deep forest + warm cream + antique gold, in the spirit of
+     boutique wealth/branding studios (Forest Ridge / Vénoir refs). */
+  --color-theme-ivory: #F8F3E7;        /* warm cream - main background */
+  --color-theme-charcoal: #172218;     /* deep forest-black - text & dark sections */
+  --color-theme-olive: #33503B;        /* rich forest green - secondary accent */
+  --color-theme-sage: #E4DCC5;         /* soft cream-stone - alt section bg */
+  --color-theme-bronze: #BE9A4E;       /* antique gold - CTAs & highlights */
+  --color-theme-stone: #8A8367;        /* warm taupe - muted text */
+
+  /* CRM / portal accents - Modern SaaS Palette */
+  --color-portal-bg: #F8FAFC;        /* slate-50 */
+  --color-portal-card: #FFFFFF;
+  --color-portal-line: #E2E8F0;      /* slate-200 */
+  --color-portal-ink: #0F172A;       /* slate-900 */
+  --color-portal-muted: #64748B;     /* slate-500 */
+  --color-portal-gold: #4F46E5;      /* indigo-600 (primary action) */
+  --color-portal-gold-soft: #E0E7FF; /* indigo-100 */
+  --color-portal-forest: #334155;    /* slate-700 (secondary) */
+  --color-portal-success: #059669;   /* emerald-600 */
+  --color-portal-success-soft: #D1FAE5; /* emerald-100 */
+  --color-portal-warning: #D97706;   /* amber-600 */
+  --color-portal-warning-soft: #FEF3C7; /* amber-100 */
+  --color-portal-review: #7C3AED;    /* violet-600 */
+  --color-portal-review-soft: #EDE9FE; /* violet-100 */
+  --color-portal-danger: #E11D48;    /* rose-600 */
+  --color-portal-danger-soft: #FFE4E6; /* rose-100 */
+
+  --font-serif: "Playfair Display", serif;
+  --font-sans: Inter, sans-serif;
+}
+
+@layer base {
+  body {
+    @apply bg-theme-ivory text-theme-charcoal font-sans antialiased overflow-x-hidden;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-serif font-normal;
+  }
+}
+
+.editorial-border {
+  @apply border border-theme-charcoal/20;
+}
+
+.transition-slow {
+  transition: all 0.5s ease-out;
+}
+
+/* Arched image frame - signature motif echoed across the site */
+.arch-frame {
+  border-radius: 999px 999px 12px 12px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
