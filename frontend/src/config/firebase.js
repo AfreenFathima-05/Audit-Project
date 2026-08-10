@@ -10,6 +10,27 @@ const firebaseConfig = {
   appId: import.meta.env.VITE_FIREBASE_APP_ID,
 };
 
-const app = initializeApp(firebaseConfig);
-export const auth = getAuth(app);
-export const googleProvider = new GoogleAuthProvider();
+let app;
+let authObj;
+let providerObj;
+
+try {
+  // Only initialize if we have an API key, otherwise it will crash the entire app on deploy
+  if (firebaseConfig.apiKey) {
+    app = initializeApp(firebaseConfig);
+    authObj = getAuth(app);
+    providerObj = new GoogleAuthProvider();
+  } else {
+    console.warn("Firebase API key missing. Running in fallback mode.");
+    // Mock objects so imports don't crash
+    authObj = {};
+    providerObj = {};
+  }
+} catch (error) {
+  console.warn("Firebase initialization failed:", error);
+  authObj = {};
+  providerObj = {};
+}
+
+export const auth = authObj;
+export const googleProvider = providerObj;

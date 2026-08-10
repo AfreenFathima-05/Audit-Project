@@ -179,14 +179,14 @@ const Navbar = () => {
         </div>
 
         {/* Mobile Toggle */}
-        <button className={`md:hidden transition-colors ${isTransparent ? 'text-theme-ivory' : 'text-theme-charcoal'}`} onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
+        <button className={`lg:hidden transition-colors ${isTransparent ? 'text-theme-ivory' : 'text-theme-charcoal'}`} onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
           {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
       </div>
 
       {/* Mobile Nav */}
       {mobileMenuOpen && (
-        <div className="md:hidden absolute top-full left-0 w-full bg-theme-ivory border-b border-theme-charcoal/10 shadow-lg max-h-[80vh] overflow-y-auto">
+        <div className="lg:hidden absolute top-full left-0 w-full bg-theme-ivory border-b border-theme-charcoal/10 shadow-lg max-h-[80vh] overflow-y-auto">
           <ul className="flex flex-col py-4 px-6">
             {navItems.map((item) => (
               <li key={item.name} className="border-b border-theme-charcoal/5">
