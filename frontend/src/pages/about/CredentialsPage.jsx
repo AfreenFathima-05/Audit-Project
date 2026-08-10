@@ -2,6 +2,8 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { siteData } from '../../data/siteData';
 import { Shield, Award, Briefcase, FileCheck } from 'lucide-react';
+import img3 from '../../../assets/3.png';
+import img4 from '../../../assets/4.png';
 
 const CredentialsPage = () => {
   return (
@@ -120,14 +122,14 @@ const CredentialsPage = () => {
                   <div className="bg-white p-4 rounded-xl border border-theme-charcoal/20 shadow-sm group hover:shadow-md transition-shadow">
                     <div className="h-48 bg-theme-charcoal/5 rounded overflow-hidden mb-4 relative">
                       <div className="absolute inset-0 bg-theme-charcoal/0 group-hover:bg-theme-charcoal/10 transition-colors z-10"></div>
-                      <img src="/src/assets/3.png" alt="Certificate 1" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                      <img src={img3} alt="Certificate 1" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
                     </div>
                     <h4 className="font-semibold text-theme-charcoal text-center text-sm uppercase tracking-widest">ISO 9001:2015</h4>
                   </div>
                   <div className="bg-white p-4 rounded-xl border border-theme-charcoal/20 shadow-sm group hover:shadow-md transition-shadow">
                     <div className="h-48 bg-theme-charcoal/5 rounded overflow-hidden mb-4 relative">
                       <div className="absolute inset-0 bg-theme-charcoal/0 group-hover:bg-theme-charcoal/10 transition-colors z-10"></div>
-                      <img src="/src/assets/4.png" alt="Certificate 2" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                      <img src={img4} alt="Certificate 2" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
                     </div>
                     <h4 className="font-semibold text-theme-charcoal text-center text-sm uppercase tracking-widest">PCAOB Registered</h4>
                   </div>

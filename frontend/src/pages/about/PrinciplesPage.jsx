@@ -1,6 +1,11 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { siteData } from '../../data/siteData';
+import img5 from '../../../assets/5.png';
+import img6 from '../../../assets/6.png';
+import img7 from '../../../assets/7.png';
+import img8 from '../../../assets/8.png';
+import img9 from '../../../assets/9.png';
 
 const PrinciplesPage = () => {
   return (
@@ -40,7 +45,7 @@ const PrinciplesPage = () => {
           </div>
           <div className="h-[400px] w-full rounded-xl overflow-hidden shadow-lg">
             <img 
-              src="/src/assets/5.png" 
+              src={img5} 
               alt="Principles" 
               className="w-full h-full object-cover"
             />
@@ -52,10 +57,10 @@ const PrinciplesPage = () => {
         <div className="space-y-24">
         {siteData.principles.map((principle, index) => {
           const isEven = index % 2 === 0;
-          const imageSrc = index === 0 ? "/src/assets/6.png" :
-                           index === 1 ? "/src/assets/7.png" :
-                           index === 2 ? "/src/assets/8.png" :
-                           "/src/assets/9.png";
+          const imageSrc = index === 0 ? img6 :
+                           index === 1 ? img7 :
+                           index === 2 ? img8 :
+                           img9;
                            
           return (
           <motion.div 
