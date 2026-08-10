@@ -195,11 +195,7 @@ const Navbar = () => {
                     to={item.href}
                     className="text-theme-charcoal uppercase tracking-widest text-sm"
                     onClick={(e) => {
-                      if (!item.subItems) {
-                        handleSubItemClick();
-                      } else {
-                        handleMobileNavClick(item.name, true, e);
-                      }
+                      handleSubItemClick();
                     }}
                   >
                     {item.name}

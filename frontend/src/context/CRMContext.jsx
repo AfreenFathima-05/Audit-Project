@@ -155,25 +155,18 @@ export const CRMProvider = ({ children }) => {
   // ---- Auth actions ----
   const login = async (email, password, role) => {
     setError('');
-    try {
-      const res = await fetch(`${API_URL}/api/auth/login`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, password, role }),
-      });
-      const data = await res.json();
-      if (!res.ok) {
-        throw new Error(data.message || 'Login failed');
-      }
-      persistSession(mapUser(data.user), data.token);
-      return mapUser(data.user);
-    } catch (err) {
-      console.warn('Backend login failed, using fallback mode:', err);
-      // Fallback mode so login never fails and user can see the demo
-      const mockUser = { id: `mock-${Date.now()}`, name: email.split('@')[0], email, role: role || 'client', company: 'Demo Co' };
-      persistSession(mockUser, 'mock-token-' + Date.now());
-      return mockUser;
+    const res = await fetch(`${API_URL}/api/auth/login`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email, password, role }),
+    });
+    const data = await res.json();
+    if (!res.ok) {
+      setError(data.message || 'Login failed');
+      throw new Error(data.message || 'Login failed');
     }
+    persistSession(mapUser(data.user), data.token);
+    return mapUser(data.user);
   };
 
   const loginWithGoogle = async (role) => {
@@ -181,27 +174,19 @@ export const CRMProvider = ({ children }) => {
     try {
       const result = await signInWithPopup(auth, googleProvider);
       const idToken = await result.user.getIdToken();
-      const { email, displayName, uid } = result.user;
 
-      try {
-        const res = await fetch(`${API_URL}/api/auth/google`, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ token: idToken, role }),
-        });
-        const data = await res.json();
-        if (!res.ok) {
-          throw new Error(data.message || 'Google sign-in failed');
-        }
-        persistSession(mapUser(data.user), data.token);
-        return mapUser(data.user);
-      } catch (backendErr) {
-        console.warn('Backend Google Auth failed, using fallback mode:', backendErr);
-        // Fallback mode so login never fails
-        const mockUser = { id: uid || `mock-${Date.now()}`, name: displayName || email.split('@')[0], email, role: role || 'client', company: 'Demo Co' };
-        persistSession(mockUser, 'mock-token-' + Date.now());
-        return mockUser;
+      const res = await fetch(`${API_URL}/api/auth/google`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ token: idToken, role }),
+      });
+      const data = await res.json();
+      if (!res.ok) {
+        setError(data.message || 'Google sign-in failed');
+        throw new Error(data.message || 'Google sign-in failed');
       }
+      persistSession(mapUser(data.user), data.token);
+      return mapUser(data.user);
     } catch (err) {
       setError(err.message || 'Google sign-in failed');
       throw err;

@@ -90,7 +90,7 @@ function App() {
   }, []);
 
   return (
-    <div className="font-sans antialiased text-theme-charcoal bg-theme-ivory selection:bg-theme-bronze selection:text-theme-ivory min-h-screen flex flex-col">
+    <div className="font-sans antialiased text-theme-charcoal bg-theme-ivory selection:bg-theme-bronze selection:text-theme-ivory min-h-screen flex flex-col overflow-x-hidden w-full">
       <AnimatePresence mode="wait">
         {showPreloader && <Preloader key="preloader" onComplete={() => setShowPreloader(false)} />}
       </AnimatePresence>
