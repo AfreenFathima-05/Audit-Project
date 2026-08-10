@@ -1,3 +1,11 @@
+import img11 from '../assets/11.png';
+import img12 from '../assets/12.png';
+import img13 from '../assets/13.png';
+import img14 from '../assets/14.png';
+import img15 from '../assets/15.png';
+import img16 from '../assets/16.png';
+import img17 from '../assets/17.png';
+
 export const siteData = {
   firmName: "Aurilious & Co.",
   tagline: "Clear Numbers. Confident Decisions.",
@@ -34,7 +42,7 @@ export const siteData = {
       description: "Strategic tax planning and preparation to minimize liability while maintaining strict adherence to current tax regulations.",
       longDescription: "Navigating the labyrinth of modern tax codes requires more than just compliance; it demands proactive strategy. Our Taxation services are designed to legally minimize your tax burden while ensuring you remain completely off the radar for disputes or penalties. We map out your entire corporate structure, cross-border transactions, and capital investments to find optimal tax efficiencies. From filing complex corporate returns to managing high-stakes tax assessments, we act as your formidable shield and strategist in the tax domain.",
       deliverables: ["Corporate Tax Planning", "International Taxation", "Transfer Pricing", "Tax Assessments"],
-      image: "/src/assets/11.png"
+      image: img11
     },
     {
       id: "03",
@@ -42,7 +50,7 @@ export const siteData = {
       description: "Comprehensive Goods and Services Tax advisory, including registration, filing, and dispute resolution.",
       longDescription: "Since its inception, GST has dramatically altered the compliance landscape. Our specialized GST wing is entirely dedicated to ensuring your business masters this indirect tax regime without operational friction. We handle the heavy lifting of multi-state registrations, meticulous monthly filings, and maximizing your Input Tax Credit (ITC) so cash isn't needlessly locked up. If disputes or departmental audits arise, our seasoned litigators step in to resolve matters swiftly, minimizing disruption to your daily commerce.",
       deliverables: ["GST Registration & Filings", "Input Tax Credit (ITC) Advisory", "GST Audits", "Litigation Support"],
-      image: "/src/assets/12.png"
+      image: img12
     },
     {
       id: "04",
@@ -73,7 +81,7 @@ export const siteData = {
     {
       name: "Manufacturing",
       description: "Cost auditing, supply chain financial optimization, and capital asset management for large-scale production facilities.",
-      image: "/src/assets/13.png",
+      image: img13,
       caseStudy: {
         client: "Apex Industrial Group",
         challenge: "Apex was experiencing a mysterious 14% bleed in their gross margins despite record sales volume, leading to severe cash flow crunches.",
@@ -84,7 +92,7 @@ export const siteData = {
     {
       name: "Retail & E-commerce",
       description: "Inventory valuation, multi-state GST compliance, and cash-flow optimization for high-volume retail operations.",
-      image: "/src/assets/14.png",
+      image: img14,
       caseStudy: {
         client: "Lumina Retail Network",
         challenge: "Managing operations across 12 states, Lumina faced staggering penalties due to misaligned GST filings and a chaotic multi-warehouse inventory system.",
@@ -95,7 +103,7 @@ export const siteData = {
     {
       name: "Information Technology",
       description: "R&D tax credits, software capitalization, and international transfer pricing for global tech firms.",
-      image: "/src/assets/15.png",
+      image: img15,
       caseStudy: {
         client: "Nexus Software Solutions",
         challenge: "Expanding operations to Europe and Asia created a tax nightmare. Nexus was facing double taxation and had entirely missed claiming credits for their massive R&D spend.",
@@ -106,7 +114,7 @@ export const siteData = {
     {
       name: "Healthcare",
       description: "Regulatory compliance, revenue cycle analysis, and medical practice valuations for healthcare providers.",
-      image: "/src/assets/16.png",
+      image: img16,
       caseStudy: {
         client: "St. Jude Regional Medical",
         challenge: "The hospital's revenue cycle was broken. Claims were being denied at a rate of 28%, and their aging accounts receivable threatened daily operations.",
@@ -128,7 +136,7 @@ export const siteData = {
     {
       name: "Professional Services",
       description: "Partnership accounting, profit allocation strategies, and succession planning for service firms.",
-      image: "/src/assets/17.png",
+      image: img17,
       caseStudy: {
         client: "Harrison & Associates Legal",
         challenge: "A 40-partner law firm was experiencing intense internal friction due to an outdated, inequitable profit allocation model and no clear succession plan for retiring founders.",
