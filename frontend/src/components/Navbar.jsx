@@ -89,6 +89,7 @@ const Navbar = () => {
 
   return (
     <nav
+      ref={navRef}
       className={`fixed w-full z-50 transition-all duration-300 py-4 ${
         isTransparent
           ? 'bg-transparent border-b border-transparent'
@@ -116,7 +117,7 @@ const Navbar = () => {
         </div>
 
         {/* Desktop Nav */}
-        <div className="hidden lg:flex items-center space-x-2 xl:space-x-6 w-full justify-end" ref={navRef}>
+        <div className="hidden lg:flex items-center space-x-2 xl:space-x-6 w-full justify-end">
           <ul className="flex space-x-4 xl:space-x-5">
             {navItems.map((item) => (
               <li
@@ -212,13 +213,13 @@ const Navbar = () => {
 
                 {/* Mobile Dropdown */}
                 {item.subItems && openDropdown === item.name && (
-                  <ul className="pl-4 pb-3 flex flex-col space-y-3">
+                  <ul className="pl-4 pb-3 flex flex-col">
                     {item.subItems.map((sub, idx) => (
                       <li key={idx}>
                         <Link
                           to={sub.href}
                           onClick={handleSubItemClick}
-                          className="block text-theme-charcoal/70 uppercase tracking-wider text-xs"
+                          className="block py-2 text-theme-charcoal/70 uppercase tracking-wider text-xs"
                         >
                           {sub.name}
                         </Link>
