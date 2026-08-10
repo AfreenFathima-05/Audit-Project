@@ -1,11 +1,11 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { siteData } from '../../data/siteData';
-import img5 from '../../../assets/5.png';
-import img6 from '../../../assets/6.png';
-import img7 from '../../../assets/7.png';
-import img8 from '../../../assets/8.png';
-import img9 from '../../../assets/9.png';
+import img5 from '../../assets/5.png';
+import img6 from '../../assets/6.png';
+import img7 from '../../assets/7.png';
+import img8 from '../../assets/8.png';
+import img9 from '../../assets/9.png';
 
 const PrinciplesPage = () => {
   return (

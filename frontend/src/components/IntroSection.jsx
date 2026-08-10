@@ -1,8 +1,8 @@
 import React from 'react';
 import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import img1 from '../../assets/1.png';
-import img2 from '../../assets/2.png';
+import img1 from '../assets/1.png';
+import img2 from '../assets/2.png';
 
 const IntroSection = () => {
   const features = [
