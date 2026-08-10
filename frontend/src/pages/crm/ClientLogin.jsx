@@ -35,29 +35,49 @@ const ClientLogin = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-theme-charcoal py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-md w-full space-y-8 bg-theme-ivory p-8 rounded-xl shadow-md">
-        <div>
-          <h2 className="mt-6 text-center text-3xl font-serif text-theme-charcoal">Client Login</h2>
+    <div className="min-h-screen flex items-center justify-center bg-theme-charcoal relative overflow-hidden py-12 px-4 sm:px-6 lg:px-8">
+      {/* Background Orbs for glassmorphism effect */}
+      <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-theme-olive/20 rounded-full blur-[100px] -translate-x-1/2 -translate-y-1/2 pointer-events-none"></div>
+      <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-theme-bronze/10 rounded-full blur-[100px] translate-x-1/2 translate-y-1/2 pointer-events-none"></div>
+
+      <div className="max-w-md w-full space-y-8 bg-white/5 backdrop-blur-md border border-white/10 p-10 rounded-2xl shadow-2xl relative z-10">
+        <div className="flex flex-col items-center">
+          {/* Logo */}
+          <div className="w-16 h-16 bg-white/5 rounded-xl flex items-center justify-center shadow-sm border border-theme-bronze/30 mb-6 relative overflow-hidden">
+            <div className="absolute inset-0 bg-gradient-to-br from-theme-bronze/10 to-transparent opacity-50"></div>
+            <span className="font-serif text-theme-ivory font-bold text-2xl tracking-tighter flex items-center relative z-10">
+              A<span className="text-theme-bronze font-light italic text-xl mx-0.5">&</span>C
+            </span>
+          </div>
+          <h2 className="mt-2 text-center text-3xl font-serif text-theme-ivory tracking-wide">Client Portal</h2>
+          <p className="text-theme-stone text-sm mt-2 font-light">Sign in to access your dashboard</p>
         </div>
-        {error && <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded text-sm">{error}</div>}
+
+        {error && (
+          <div className="bg-red-500/10 border border-red-500/50 text-red-200 px-4 py-3 rounded text-sm text-center">
+            {error}
+          </div>
+        )}
+
         <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
-          <div className="rounded-md shadow-sm -space-y-px">
+          <div className="space-y-4">
             <div>
+              <label className="sr-only">Email address</label>
               <input
                 type="email"
                 required
-                className="appearance-none rounded-none relative block w-full px-3 py-2 border border-theme-charcoal/20 placeholder-theme-charcoal/50 text-theme-charcoal rounded-t-md focus:outline-none focus:ring-theme-bronze focus:border-theme-bronze sm:text-sm bg-transparent"
+                className="appearance-none block w-full px-4 py-3 border border-white/10 placeholder-white/30 text-theme-ivory rounded-lg focus:outline-none focus:ring-1 focus:ring-theme-bronze focus:border-theme-bronze sm:text-sm bg-white/5 transition-colors"
                 placeholder="Email address"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
               />
             </div>
             <div>
+              <label className="sr-only">Password</label>
               <input
                 type="password"
                 required
-                className="appearance-none rounded-none relative block w-full px-3 py-2 border border-theme-charcoal/20 placeholder-theme-charcoal/50 text-theme-charcoal rounded-b-md focus:outline-none focus:ring-theme-bronze focus:border-theme-bronze sm:text-sm bg-transparent"
+                className="appearance-none block w-full px-4 py-3 border border-white/10 placeholder-white/30 text-theme-ivory rounded-lg focus:outline-none focus:ring-1 focus:ring-theme-bronze focus:border-theme-bronze sm:text-sm bg-white/5 transition-colors"
                 placeholder="Password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
@@ -69,26 +89,30 @@ const ClientLogin = () => {
             <button
               type="submit"
               disabled={submitting}
-              className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm uppercase tracking-widest font-bold rounded-md text-theme-ivory bg-theme-bronze hover:bg-[#A38A66] transition-colors focus:outline-none disabled:opacity-60 shadow-md"
+              className="group relative w-full flex justify-center py-3 px-4 border border-transparent text-sm uppercase tracking-widest font-bold rounded-lg text-theme-charcoal bg-theme-bronze hover:bg-[#A38A66] transition-all duration-300 focus:outline-none disabled:opacity-60 shadow-lg hover:shadow-xl"
             >
-              {submitting ? 'Signing in...' : 'Sign in'}
+              {submitting ? 'Signing in...' : 'Sign In'}
             </button>
           </div>
         </form>
 
-        <div className="mt-6">
+        <div className="mt-8">
           <div className="relative">
-            <div className="absolute inset-0 flex items-center"><div className="w-full border-t border-theme-charcoal/20" /></div>
-            <div className="relative flex justify-center text-sm"><span className="px-2 bg-theme-ivory text-theme-charcoal/70">Or continue with</span></div>
+            <div className="absolute inset-0 flex items-center">
+              <div className="w-full border-t border-white/10" />
+            </div>
+            <div className="relative flex justify-center text-sm">
+              <span className="px-3 bg-[#242A27] text-white/50 rounded-full">Or continue with</span>
+            </div>
           </div>
 
           <div className="mt-6">
             <button
               onClick={handleGoogleLogin}
-              className="w-full flex justify-center items-center px-4 py-2 border border-theme-charcoal/20 shadow-sm text-sm font-medium rounded-md text-theme-charcoal bg-transparent hover:bg-theme-charcoal/5 transition-colors"
+              className="w-full flex justify-center items-center px-4 py-3 border border-white/10 shadow-sm text-sm font-medium rounded-lg text-theme-ivory bg-white/5 hover:bg-white/10 transition-colors"
             >
-              <img className="h-5 w-5 mr-2" src="https://www.svgrepo.com/show/475656/google-color.svg" alt="Google logo" />
-              Continue with Google
+              <img className="h-5 w-5 mr-3" src="https://www.svgrepo.com/show/475656/google-color.svg" alt="Google logo" />
+              Google
             </button>
           </div>
         </div>

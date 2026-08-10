@@ -97,13 +97,20 @@ const Navbar = () => {
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-12 flex justify-between items-center">
         {/* Logo */}
-        <div className="flex flex-col items-start justify-center shrink-0 mr-4">
-          <Link to="/" className="flex flex-col items-start group">
-            <div className="w-10 h-10 md:w-12 md:h-12 bg-theme-charcoal rounded-xl flex items-center justify-center p-2 shadow-md overflow-hidden mb-1 group-hover:shadow-lg transition-shadow">
-              <img src="/aurilious_logo.png" alt="Aurilious & Co Logo" className="w-full h-full object-cover" />
+        <div className="flex items-center justify-center shrink-0 mr-6">
+          <Link to="/" className="flex flex-col items-center gap-1 md:gap-1.5 group">
+            <div className="w-10 h-10 md:w-11 md:h-11 bg-theme-charcoal rounded-xl flex items-center justify-center shadow-md border border-theme-bronze/20 group-hover:border-theme-bronze/50 group-hover:shadow-lg group-hover:scale-105 transition-all duration-300 relative overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-br from-theme-bronze/20 to-transparent opacity-50"></div>
+              <span className="font-serif text-theme-ivory font-bold text-lg md:text-xl tracking-tighter flex items-center relative z-10">
+                A<span className="text-theme-bronze font-light italic text-sm md:text-base mx-0.5">&</span>C
+              </span>
             </div>
-            <div className={`font-serif font-bold tracking-widest flex flex-col items-start leading-none uppercase transition-colors ${isTransparent ? 'text-theme-ivory' : 'text-theme-charcoal'}`}>
-              <span className="text-lg md:text-xl">Aurilious</span>
+            <div className={`flex flex-col items-center justify-center transition-colors ${isTransparent ? 'text-theme-ivory' : 'text-theme-charcoal'}`}>
+              <h1 className="font-serif text-[11px] md:text-xs font-bold tracking-[0.2em] uppercase leading-none mb-0 flex items-center">
+                Aurilious
+                <span className="text-theme-bronze font-light italic text-[11px] md:text-xs lowercase mx-1">&</span>
+                <span className="text-[11px] md:text-xs">Co.</span>
+              </h1>
             </div>
           </Link>
         </div>

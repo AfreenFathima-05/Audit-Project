@@ -11,12 +11,19 @@ const Footer = () => {
           
           {/* Brand Col */}
           <div className="pr-0 lg:pr-12">
-            <div className="flex items-center gap-3 mb-6">
-              <div className="w-10 h-10 bg-white rounded flex items-center justify-center p-1 shadow-sm overflow-hidden">
-                <img src="/aurilious_logo.png" alt="Aurilious Logo" className="w-full h-full object-cover" />
+            <div className="flex flex-col items-start gap-1 md:gap-1.5 mb-6 group">
+              <div className="w-10 h-10 md:w-11 md:h-11 bg-white/5 rounded-xl flex items-center justify-center shadow-sm border border-theme-bronze/20 group-hover:border-theme-bronze/50 group-hover:shadow-md transition-all relative overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-br from-theme-bronze/10 to-transparent opacity-50"></div>
+                <span className="font-serif text-theme-ivory font-bold text-lg md:text-xl tracking-tighter flex items-center relative z-10">
+                  A<span className="text-theme-bronze font-light italic text-sm md:text-base mx-0.5">&</span>C
+                </span>
               </div>
-              <Link to="/" className="font-serif font-semibold text-xl tracking-wide text-theme-ivory flex items-center gap-1">
-                <span>Aurilious</span>
+              <Link to="/" className="flex flex-col items-start justify-center text-theme-ivory">
+                <h2 className="font-serif text-[11px] md:text-xs font-bold tracking-[0.2em] uppercase leading-none mb-0 flex items-center">
+                  Aurilious
+                  <span className="text-theme-bronze font-light italic text-[11px] md:text-xs lowercase mx-1">&</span>
+                  <span className="text-[11px] md:text-xs">Co.</span>
+                </h2>
               </Link>
             </div>
             <p className="text-theme-stone text-sm leading-relaxed mb-8 max-w-sm">

@@ -38,25 +38,43 @@ const Preloader = ({ onComplete }) => {
       {/* Container */}
       <div className="relative z-10 flex flex-col items-center p-12">
         
-        {/* Animated abstract logo */}
+        {/* Animated Custom A&C Monogram Logo */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          className="flex items-center gap-4 mb-8"
+          initial={{ opacity: 0, scale: 0.8, y: 20 }}
+          animate={{ opacity: 1, scale: 1, y: 0 }}
+          transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+          className="flex items-center gap-4 mb-8 relative"
         >
-          <motion.div 
-            className="w-16 h-16 border-[2px] border-theme-bronze rotate-45 flex items-center justify-center shadow-[0_0_15px_rgba(190,154,78,0.15)]"
-            animate={{ rotate: 225 }}
-            transition={{ duration: 2.5, ease: "easeInOut" }}
-          >
-            <motion.div 
-              className="w-6 h-6 bg-theme-ivory shadow-[0_0_10px_rgba(248,243,231,0.3)]" 
-              initial={{ scale: 0 }}
-              animate={{ scale: 1 }}
-              transition={{ delay: 0.6, duration: 0.6 }}
-            />
-          </motion.div>
+          {/* Outer glowing ring */}
+          <motion.div
+            className="absolute inset-0 rounded-2xl border border-theme-bronze/30 shadow-[0_0_30px_rgba(190,154,78,0.2)]"
+            initial={{ rotate: 0, scale: 0.8, opacity: 0 }}
+            animate={{ rotate: 360, scale: 1.1, opacity: [0, 1, 0.5] }}
+            transition={{ duration: 3, ease: "easeInOut", repeat: Infinity, repeatType: "reverse" }}
+          />
+          
+          <div className="w-20 h-20 md:w-24 md:h-24 bg-theme-charcoal rounded-2xl flex items-center justify-center shadow-2xl border border-theme-bronze/40 relative overflow-hidden z-10">
+            <div className="absolute inset-0 bg-gradient-to-br from-theme-bronze/20 to-transparent opacity-60"></div>
+            
+            {/* The A&C Text */}
+            <motion.span 
+              className="font-serif text-theme-ivory font-bold text-3xl md:text-4xl tracking-tighter flex items-center relative z-10"
+              initial={{ filter: "blur(10px)", opacity: 0 }}
+              animate={{ filter: "blur(0px)", opacity: 1 }}
+              transition={{ duration: 1.2, delay: 0.3 }}
+            >
+              A
+              <motion.span 
+                className="text-theme-bronze font-light italic text-2xl md:text-3xl mx-1"
+                initial={{ opacity: 0, scale: 0 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.8, delay: 0.8, type: "spring" }}
+              >
+                &
+              </motion.span>
+              C
+            </motion.span>
+          </div>
         </motion.div>
 
         {/* Brand Name */}
