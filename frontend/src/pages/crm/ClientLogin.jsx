@@ -25,7 +25,6 @@ const ClientLogin = () => {
   };
 
   const handleGoogleLogin = async () => {
-    setError('');
     try {
       await loginWithGoogle('client');
       navigate('/crm/client/dashboard');

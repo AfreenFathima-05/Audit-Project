@@ -25,7 +25,6 @@ const AdminLogin = () => {
   };
 
   const handleGoogleLogin = async () => {
-    setError('');
     try {
       await loginWithGoogle('admin');
       navigate('/crm/admin/dashboard');

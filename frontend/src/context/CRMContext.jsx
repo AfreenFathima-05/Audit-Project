@@ -1,5 +1,5 @@
 import React, { createContext, useState, useContext, useEffect, useCallback } from 'react';
-import { signInWithRedirect, getRedirectResult, signOut } from 'firebase/auth';
+import { signInWithPopup, signOut } from 'firebase/auth';
 import { auth, googleProvider } from '../config/firebase';
 
 const CRMContext = createContext();
@@ -76,40 +76,6 @@ export const CRMProvider = ({ children }) => {
     }),
     [token]
   );
-
-  // Handle Google Auth Redirect returning to the app
-  useEffect(() => {
-    const checkRedirect = async () => {
-      try {
-        const result = await getRedirectResult(auth);
-        if (result) {
-          const role = localStorage.getItem('pendingGoogleRole') || 'client';
-          const idToken = await result.user.getIdToken();
-          
-          const res = await fetch(`${API_URL}/api/auth/google`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ token: idToken, role }),
-          });
-          const data = await res.json();
-          if (!res.ok) {
-            setError(data.message || 'Google sign-in failed');
-            return;
-          }
-          persistSession(mapUser(data.user), data.token);
-          
-          // Clear the pending role and force redirect to dashboard
-          localStorage.removeItem('pendingGoogleRole');
-          window.location.href = `/crm/${data.user.role}/dashboard`;
-        }
-      } catch (err) {
-        if (err.code !== 'auth/redirect-cancelled-by-user') {
-          setError(err.message || 'Google sign-in failed');
-        }
-      }
-    };
-    checkRedirect();
-  }, []);
 
   const persistSession = (user, tok) => {
     setCurrentUser(user);
@@ -204,10 +170,27 @@ export const CRMProvider = ({ children }) => {
   };
 
   const loginWithGoogle = async (role) => {
-    setError('');
+    // CRITICAL: Call signInWithPopup IMMEDIATELY before any other async or state updates.
+    // This prevents Safari/Mobile browsers from blocking the popup.
     try {
-      localStorage.setItem('pendingGoogleRole', role);
-      await signInWithRedirect(auth, googleProvider);
+      const result = await signInWithPopup(auth, googleProvider);
+      
+      // Now that popup is open and resolved, we can safely update state
+      setError('');
+      const idToken = await result.user.getIdToken();
+
+      const res = await fetch(`${API_URL}/api/auth/google`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ token: idToken, role }),
+      });
+      const data = await res.json();
+      if (!res.ok) {
+        setError(data.message || 'Google sign-in failed');
+        throw new Error(data.message || 'Google sign-in failed');
+      }
+      persistSession(mapUser(data.user), data.token);
+      return mapUser(data.user);
     } catch (err) {
       setError(err.message || 'Google sign-in failed');
       throw err;

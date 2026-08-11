@@ -25,7 +25,6 @@ const JuniorLogin = () => {
   };
 
   const handleGoogleLogin = async () => {
-    setError('');
     try {
       await loginWithGoogle('junior');
       navigate('/crm/junior/dashboard');

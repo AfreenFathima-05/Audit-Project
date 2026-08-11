@@ -78,7 +78,6 @@ const PortalPage = () => {
   };
 
   const handleGoogleLogin = async () => {
-    setError('');
     try {
       await loginWithGoogle(activeRole);
       navigate(loginContent[activeRole].redirect);
