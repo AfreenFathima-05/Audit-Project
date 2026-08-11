@@ -15,7 +15,7 @@ const AdminDocuments = () => {
   const [error, setError] = useState('');
   const [searchTerm, setSearchTerm] = useState('');
 
-  const API_URL = import.meta.env.VITE_API_URL || 'https://audit-project-9yo1.onrender.com';
+  const API_URL = 'https://audit-project-9yo1.onrender.com';
   const token = localStorage.getItem('crmToken');
 
 
