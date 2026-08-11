@@ -126,6 +126,12 @@ const google = async (req, res) => {
       }
     }
 
+    // Update name if Google provided a better one than the email prefix
+    if (name && (!user.name || user.name === lowerEmail.split('@')[0] || user.name === lowerEmail)) {
+      user.name = name;
+      await user.save();
+    }
+
     if (!user.firebaseUid) {
       user.firebaseUid = uid;
       await user.save();

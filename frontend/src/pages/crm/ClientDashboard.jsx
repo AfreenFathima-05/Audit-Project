@@ -40,7 +40,7 @@ const ClientDashboard = () => {
         <div className="flex-1 px-6 lg:px-12 py-10 w-full overflow-x-hidden bg-gradient-to-br from-[#F4F6F8] via-[#E9EDF1] to-[#E2E6EA]">
           <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="mb-10 flex flex-col gap-8">
           <div>
-            <h2 className="text-3xl font-serif text-portal-ink mb-2">Welcome, {currentUser.name.split(' ')[0]}</h2>
+            <h2 className="text-3xl font-serif text-portal-ink mb-2">Welcome, {currentUser.name.split(' ')[0].charAt(0).toUpperCase() + currentUser.name.split(' ')[0].slice(1)}</h2>
             <p className="text-portal-muted">Track your active engagements and securely exchange documents.</p>
           </div>
           <div className="flex flex-wrap lg:flex-nowrap gap-4 w-full">

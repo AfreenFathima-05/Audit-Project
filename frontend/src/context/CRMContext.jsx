@@ -6,7 +6,7 @@ const CRMContext = createContext();
 
 export const useCRM = () => useContext(CRMContext);
 
-const API_URL = 'https://audit-project-9yo1.onrender.com';
+const API_URL = import.meta.env.VITE_API_URL || 'https://audit-project-9yo1.onrender.com';
 
 // Maps a backend Audit document to the flat shape the dashboards already use
 // (id / clientId / juniorId / reportDocument) so no dashboard component had to change.
