@@ -3,6 +3,7 @@ import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import img1 from '../assets/1.png';
 import img2 from '../assets/2.png';
+import img20 from '../assets/20.png';
 
 const IntroSection = () => {
   const features = [
@@ -17,7 +18,7 @@ const IntroSection = () => {
       desc: "Structuring for maximum efficiency and compliance."
     },
     {
-      image: img1,
+      image: img20,
       title: "Statutory Audits",
       desc: "Rigorous verification for complete stakeholder confidence."
     },
@@ -32,7 +33,7 @@ const IntroSection = () => {
     <section className="py-24 bg-white relative">
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
-          
+
           <div>
             <span className="text-theme-olive text-sm font-semibold tracking-widest uppercase mb-4 block">The Aurilious Standard</span>
             <h2 className="text-4xl md:text-5xl font-serif text-theme-charcoal leading-tight mb-6">
@@ -59,7 +60,7 @@ const IntroSection = () => {
               </div>
             ))}
           </div>
-          
+
         </div>
       </div>
     </section>
