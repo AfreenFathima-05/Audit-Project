@@ -2,12 +2,12 @@ import { initializeApp } from "firebase/app";
 import { getAuth, GoogleAuthProvider } from "firebase/auth";
 
 const firebaseConfig = {
-  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
-  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
-  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
-  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
-  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
-  appId: import.meta.env.VITE_FIREBASE_APP_ID,
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY || "AIzaSyB15ESlHVtorDE2773oRnQ73L-Ip9si6ns",
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN || "audit-project-ac284.firebaseapp.com",
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID || "audit-project-ac284",
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET || "audit-project-ac284.firebasestorage.app",
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID || "585344532444",
+  appId: import.meta.env.VITE_FIREBASE_APP_ID || "1:585344532444:web:a8563a769b8ae108b01919",
 };
 
 let app;
