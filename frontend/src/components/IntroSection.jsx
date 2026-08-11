@@ -1,6 +1,8 @@
 import React from 'react';
 import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import img1 from '../assets/1.png';
+import img2 from '../assets/2.png';
 
 const IntroSection = () => {
   const features = [
@@ -15,12 +17,12 @@ const IntroSection = () => {
       desc: "Structuring for maximum efficiency and compliance."
     },
     {
-      image: "https://images.unsplash.com/photo-1554224154-26032ffc0d07?q=80&w=2000&auto=format&fit=crop",
+      image: img1,
       title: "Statutory Audits",
       desc: "Rigorous verification for complete stakeholder confidence."
     },
     {
-      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2000&auto=format&fit=crop",
+      image: img2,
       title: "Strategic Growth",
       desc: "Data-driven consulting for sustainable expansion."
     }
