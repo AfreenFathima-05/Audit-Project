@@ -50,7 +50,7 @@ const IntroSection = () => {
             {features.map((feat, idx) => (
               <div key={idx} className="bg-theme-ivory border border-theme-charcoal/5 hover:border-theme-olive/30 transition-all duration-300 group rounded-xl overflow-hidden shadow-sm hover:shadow-md">
                 <div className="h-40 w-full overflow-hidden">
-                  <img src={feat.image} alt={feat.title} className="w-full h-full object-contain bg-white group-hover:scale-105 transition-transform duration-700" />
+                  <img src={feat.image} alt={feat.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
                 </div>
                 <div className="p-6">
                   <h3 className="text-xl font-serif text-theme-charcoal mb-2">{feat.title}</h3>
