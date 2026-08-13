@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Search, CheckCircle2 } from 'lucide-react';
 
-const API_URL = 'https://audit-project-9yo1.onrender.com';
+const API_URL = import.meta.env.VITE_API_URL || 'https://audit-project-9yo1.onrender.com';
 
 const STAGES = ['Received', 'Under Review', 'Assigned', 'Auditing Started', 'Internal Review', 'Final Report', 'Delivered'];
 

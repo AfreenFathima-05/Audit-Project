@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { siteData } from '../data/siteData';
 import { ShieldCheck, Lock, Award, CheckCircle2, ArrowRight } from 'lucide-react';
 
-const API_URL = 'https://audit-project-9yo1.onrender.com';
+const API_URL = import.meta.env.VITE_API_URL || 'https://audit-project-9yo1.onrender.com';
 
 const inputClass =
   'w-full bg-transparent border-b border-theme-charcoal/20 py-2.5 focus:outline-none focus:border-theme-olive transition-colors text-theme-charcoal placeholder:text-theme-charcoal/30';
