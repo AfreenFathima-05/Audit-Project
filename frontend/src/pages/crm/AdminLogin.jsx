@@ -7,7 +7,7 @@ const AdminLogin = () => {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [submitting, setSubmitting] = useState(false);
-  const { login, loginWithGoogle } = useCRM();
+  const { login } = useCRM();
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
@@ -24,14 +24,6 @@ const AdminLogin = () => {
     }
   };
 
-  const handleGoogleLogin = async () => {
-    try {
-      await loginWithGoogle('admin');
-      navigate('/crm/admin/dashboard');
-    } catch (err) {
-      setError(err.message);
-    }
-  };
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-theme-charcoal relative overflow-hidden py-12 px-4 sm:px-6 lg:px-8">
@@ -94,27 +86,6 @@ const AdminLogin = () => {
             </button>
           </div>
         </form>
-
-        <div className="mt-8">
-          <div className="relative">
-            <div className="absolute inset-0 flex items-center">
-              <div className="w-full border-t border-white/10" />
-            </div>
-            <div className="relative flex justify-center text-sm">
-              <span className="px-3 bg-[#242A27] text-white/50 rounded-full">Or continue with</span>
-            </div>
-          </div>
-
-          <div className="mt-6">
-            <button
-              onClick={handleGoogleLogin}
-              className="w-full flex justify-center items-center px-4 py-3 border border-white/10 shadow-sm text-sm font-medium rounded-lg text-theme-ivory bg-white/5 hover:bg-white/10 transition-colors"
-            >
-              <img className="h-5 w-5 mr-3" src="https://www.svgrepo.com/show/475656/google-color.svg" alt="Google logo" />
-              Google Authentication
-            </button>
-          </div>
-        </div>
       </div>
     </div>
   );
