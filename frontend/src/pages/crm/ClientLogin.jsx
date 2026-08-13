@@ -7,6 +7,8 @@ const ClientLogin = () => {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [submitting, setSubmitting] = useState(false);
+  const [isSignUp, setIsSignUp] = useState(false);
+  const [slowLoading, setSlowLoading] = useState(false);
   const { login, loginWithGoogle } = useCRM();
   const navigate = useNavigate();
 
@@ -14,13 +16,21 @@ const ClientLogin = () => {
     e.preventDefault();
     setError('');
     setSubmitting(true);
+    setSlowLoading(false);
+    
+    // Set a timer to show "waking up server" message if it takes more than 3 seconds (Render cold start)
+    const slowTimer = setTimeout(() => setSlowLoading(true), 3000);
+
     try {
       await login(email, password, 'client');
+      clearTimeout(slowTimer);
       navigate('/crm/client/dashboard');
     } catch (err) {
+      clearTimeout(slowTimer);
       setError(err.message);
     } finally {
       setSubmitting(false);
+      setSlowLoading(false);
     }
   };
 
@@ -49,7 +59,9 @@ const ClientLogin = () => {
             </span>
           </div>
           <h2 className="mt-2 text-center text-3xl font-serif text-theme-ivory tracking-wide">Client Portal</h2>
-          <p className="text-theme-stone text-sm mt-2 font-light">Sign in to access your dashboard</p>
+          <p className="text-theme-stone text-sm mt-2 font-light">
+            {isSignUp ? 'Create a new account' : 'Sign in to access your dashboard'}
+          </p>
         </div>
 
         {error && (
@@ -90,7 +102,17 @@ const ClientLogin = () => {
               disabled={submitting}
               className="group relative w-full flex justify-center py-3 px-4 border border-transparent text-sm uppercase tracking-widest font-bold rounded-lg text-theme-charcoal bg-theme-bronze hover:bg-[#A38A66] transition-all duration-300 focus:outline-none disabled:opacity-60 shadow-lg hover:shadow-xl"
             >
-              {submitting ? 'Signing in...' : 'Sign In'}
+              {submitting ? (slowLoading ? 'Waking up server (takes up to 50s)...' : (isSignUp ? 'Creating account...' : 'Signing in...')) : (isSignUp ? 'Sign Up' : 'Sign In')}
+            </button>
+          </div>
+          
+          <div className="text-center mt-4">
+            <button
+              type="button"
+              onClick={() => setIsSignUp(!isSignUp)}
+              className="text-sm text-theme-bronze hover:text-theme-ivory transition-colors"
+            >
+              {isSignUp ? 'Already have an account? Sign in' : "Don't have an account? Sign up"}
             </button>
           </div>
         </form>

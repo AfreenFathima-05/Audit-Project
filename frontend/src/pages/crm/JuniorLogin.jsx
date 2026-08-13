@@ -7,6 +7,8 @@ const JuniorLogin = () => {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [submitting, setSubmitting] = useState(false);
+  const [isSignUp, setIsSignUp] = useState(false);
+  const [slowLoading, setSlowLoading] = useState(false);
   const { login, loginWithGoogle } = useCRM();
   const navigate = useNavigate();
 
@@ -14,13 +16,21 @@ const JuniorLogin = () => {
     e.preventDefault();
     setError('');
     setSubmitting(true);
+    setSlowLoading(false);
+    
+    // Set a timer to show "waking up server" message if it takes more than 3 seconds (Render cold start)
+    const slowTimer = setTimeout(() => setSlowLoading(true), 3000);
+
     try {
       await login(email, password, 'junior');
+      clearTimeout(slowTimer);
       navigate('/crm/junior/dashboard');
     } catch (err) {
+      clearTimeout(slowTimer);
       setError(err.message);
     } finally {
       setSubmitting(false);
+      setSlowLoading(false);
     }
   };
 
@@ -49,7 +59,9 @@ const JuniorLogin = () => {
             </span>
           </div>
           <h2 className="mt-2 text-center text-3xl font-serif text-theme-ivory tracking-wide">Staff Portal</h2>
-          <p className="text-theme-stone text-sm mt-2 font-light">Sign in to access staff dashboard</p>
+          <p className="text-theme-stone text-sm mt-2 font-light">
+            {isSignUp ? 'Create a new staff account' : 'Sign in to access staff dashboard'}
+          </p>
         </div>
 
         {error && (
@@ -90,7 +102,17 @@ const JuniorLogin = () => {
               disabled={submitting}
               className="group relative w-full flex justify-center py-3 px-4 border border-transparent text-sm uppercase tracking-widest font-bold rounded-lg text-theme-charcoal bg-theme-bronze hover:bg-[#A38A66] transition-all duration-300 focus:outline-none disabled:opacity-60 shadow-lg hover:shadow-xl"
             >
-              {submitting ? 'Authenticating...' : 'Secure Sign In'}
+              {submitting ? (slowLoading ? 'Waking up server (takes up to 50s)...' : (isSignUp ? 'Creating account...' : 'Authenticating...')) : (isSignUp ? 'Sign Up' : 'Secure Sign In')}
+            </button>
+          </div>
+          
+          <div className="text-center mt-4">
+            <button
+              type="button"
+              onClick={() => setIsSignUp(!isSignUp)}
+              className="text-sm text-theme-bronze hover:text-theme-ivory transition-colors"
+            >
+              {isSignUp ? 'Already have an account? Sign in' : "Don't have an account? Sign up"}
             </button>
           </div>
         </form>
