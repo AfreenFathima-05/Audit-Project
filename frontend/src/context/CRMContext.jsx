@@ -192,8 +192,13 @@ export const CRMProvider = ({ children }) => {
       persistSession(mapUser(data.user), data.token);
       return mapUser(data.user);
     } catch (err) {
-      setError(err.message || 'Google sign-in failed');
-      throw err;
+      if (err.message === 'Failed to fetch') {
+        setError('Network Error: Could not reach the server. Please check your ad-blocker or internet connection.');
+        throw new Error('Network Error: Could not reach the server.');
+      } else {
+        setError(err.message || 'Google sign-in failed');
+        throw err;
+      }
     }
   };
 
